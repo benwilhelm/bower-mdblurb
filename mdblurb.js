@@ -32,6 +32,7 @@
 		var $controls = $this.find('.blurb-controls').first();
 		var $content = $this.find('.blurb-content').first();
 		var $editor = $("<textarea class='blurb-editor'></textarea>")
+		$editor.css({fontFamily:'monospace',fontSize:'1.1em', minHeight:'300px'});
 		$this.data('blurbContent', $content.html());
 		var w = $content.width();
 		var h = $content.height();
@@ -41,7 +42,7 @@
 			var url = '/blurb/' + $this.attr('data-blurb-id');
 			$.getJSON(url, function(resp){
 				var markdown = resp.blurb.text;
-				$editor.append(markdown);
+				$editor.val(markdown);
 				$editor.width(w);
 				$editor.height(h);
 				$content.html($editor);
@@ -53,7 +54,6 @@
 			});
 		} else {
 			$editor.width(w);
-			$editor.height(300);
 			$content.html($editor);
 			$controls.html('');
 			$controls.append($save());
