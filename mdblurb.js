@@ -82,6 +82,7 @@
 			success: function(resp) {
 				$content.html(resp.blurb.html);
 				$controls.html($edit);
+				$this.attr('data-blurb-id', resp.blurb._id)
 			}			
 		}
 
